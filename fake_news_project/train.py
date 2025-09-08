@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 import os
 
-# Load dataset
+#Load dataset
 fake = pd.read_csv("datasets/Fake.csv")
 true = pd.read_csv("datasets/True.csv")
 
@@ -17,7 +17,7 @@ true["label"] = "REAL"
 
 df = pd.concat([fake, true], axis=0).sample(frac=1, random_state=42).reset_index(drop=True)
 
-# Clean text
+#Clean text
 nltk.download("stopwords")
 nltk.download("wordnet")
 stop_words = set(stopwords.words("english"))
@@ -33,7 +33,7 @@ def clean_text(text):
 
 df["clean"] = df["text"].apply(clean_text)
 
-# Train/test split
+#Train/test split
 X_train, X_test, y_train, y_test = train_test_split(
     df["clean"], df["label"], test_size=0.2, random_state=42, stratify=df["label"]
 )
@@ -51,10 +51,9 @@ pred = lr.predict(X_test_tfidf)
 print("Accuracy:", accuracy_score(y_test, pred))
 print("\nClassification Report:\n", classification_report(y_test, pred))
 
-# Save model & vectorizer
+#Save model & vectorizer
 os.makedirs("outputs", exist_ok=True)
 joblib.dump(vectorizer, "outputs/tfidf.joblib")
 joblib.dump(lr, "outputs/logreg.joblib")
 
 print("Model and vectorizer saved in outputs/")
-
