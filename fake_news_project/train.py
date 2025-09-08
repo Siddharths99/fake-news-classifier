@@ -56,4 +56,5 @@ os.makedirs("outputs", exist_ok=True)
 joblib.dump(vectorizer, "outputs/tfidf.joblib")
 joblib.dump(lr, "outputs/logreg.joblib")
 
-print("✅ Model and vectorizer saved in outputs/")
+print("Model and vectorizer saved in outputs/")
+
