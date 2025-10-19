@@ -1,23 +1,17 @@
-1) 1. Clone the Repository
-
-git clone https://github.com/YOUR_USERNAME/fake-news-classifier.git
-cd fake-news-classifier
-
-
-2) Create Virtual Environment
+1) Create Virtual Environment
 
 (PowerShell): python -m venv .venv
 .venv\Scripts\Activate.ps1
 
-3) Install packages with this command
+2) Install packages with this command
 
 pip install pandas numpy scikit-learn nltk matplotlib joblib streamlit
 
-4) Train the Model
+3) Train the Model
 
 python train.py
 
-5) Run the Web App
+4) Run the Web App
 
 streamlit run app.py
 
